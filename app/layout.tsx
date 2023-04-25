@@ -16,12 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} min-h-screen flex flex-col items-center justify-between`}
+        className={`${inter.className} min-h-screen flex flex-col justify-between`}
       >
         {children}
         <footer className="text-center">
-          <div className="flex justify-center">
-            <hr className="w-80" />
+          <div>
+            <hr className="w-80 inline-block" />
           </div>
           <p className="p-2">&copy; 2023 Alex Frank</p>
         </footer>
