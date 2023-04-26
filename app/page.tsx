@@ -1,6 +1,5 @@
 import { Pacifico } from "next/font/google";
 import { IngredientList } from "./components/IngredientList";
-import { Button } from "./components/Button";
 
 const pacifico = Pacifico({
   weight: "400",
