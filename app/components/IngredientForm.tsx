@@ -16,7 +16,7 @@ export const IngredientForm = () => {
           placeholder="Enter ingredient..."
         />
         <input
-          className="p-3 focus:outline-none w-1/4 text-center"
+          className="p-3 focus:outline-none w-1/4 text-center "
           type="number"
           placeholder="1"
           min={1}

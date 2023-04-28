@@ -14,18 +14,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} min-h-screen flex flex-col justify-between`}
-      >
-        {children}
-        <footer className="text-center">
-          <div>
-            <hr className="w-80 inline-block" />
-          </div>
-          <p className="p-2">&copy; 2023 Alex Frank</p>
-        </footer>
-      </body>
+    <html lang="en" className="min-h-screen flex flex-col justify-between">
+      <body className={`${inter.className}`}>{children}</body>
+      <footer className="text-center text-gray-50">
+        <div>
+          <hr className="w-80 inline-block" />
+        </div>
+        <p className="p-4 font-medium from-neutral-50">
+          &copy; 2023 Alex Frank
+        </p>
+      </footer>
     </html>
   );
 }
