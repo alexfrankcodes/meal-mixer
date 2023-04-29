@@ -2,10 +2,10 @@
 
 import React from "react";
 
-export interface ButtonProps {
+type ButtonProps = {
   onClick?: () => void;
   text: string;
-}
+};
 
 export const Button = ({ onClick, text }: ButtonProps) => {
   return (

@@ -1,27 +1,58 @@
-import React from "react";
-import { Pacifico } from "next/font/google";
+import { useState } from "react";
+import { Button } from "./Button";
 
-const pacifico = Pacifico({
-  weight: "400",
-  subsets: ["latin"],
-});
+type IngredientFormProps = {
+  addIngredient: (name: string, amount: number) => void;
+};
 
-export const IngredientForm = () => {
+export const IngredientForm = ({ addIngredient }: IngredientFormProps) => {
+  const [ingredientName, setIngredientName] = useState("");
+  const [ingredientAmount, setIngredientAmount] = useState(1);
+
+  const handleIngredientChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setIngredientName(event.target.value);
+  };
+
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIngredientAmount(parseInt(event.target.value));
+  };
+
+  const handleSubmit = () => {
+    addIngredient(ingredientName, ingredientAmount);
+    setIngredientName("");
+    setIngredientAmount(1);
+  };
+
   return (
     <div className="flex flex-col w-96 text-gray-700 m-3">
       <div className="flex flex-row drop-shadow-md">
+        <label htmlFor="ingredientName" className="sr-only">
+          Ingredient Name
+        </label>
         <input
-          className="p-3 focus:outline-none  w-3/4 border-r-2"
+          id="ingredientName"
+          className="p-3 focus:outline-none w-3/4 border-r-2"
           type="text"
           placeholder="Enter ingredient..."
+          value={ingredientName}
+          onChange={handleIngredientChange}
         />
+        <label htmlFor="ingredientAmount" className="sr-only">
+          Ingredient Amount
+        </label>
         <input
-          className="p-3 focus:outline-none w-1/4 text-center "
+          id="ingredientAmount"
+          className="p-3 focus:outline-none w-1/4 text-center"
           type="number"
           placeholder="1"
           min={1}
+          value={ingredientAmount}
+          onChange={handleAmountChange}
         />
       </div>
+      <Button text="Add Ingredient" onClick={handleSubmit} />
     </div>
   );
 };
