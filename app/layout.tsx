@@ -14,18 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} min-h-screen flex flex-col items-center justify-between`}
-      >
-        {children}
-        <footer className="text-center">
-          <div className="flex justify-center">
-            <hr className="w-80" />
-          </div>
-          <p className="p-2">&copy; 2023 Alex Frank</p>
-        </footer>
-      </body>
+    <html lang="en" className="h-screen">
+      <body className={`${inter.className}`}>{children}</body>
     </html>
   );
 }
