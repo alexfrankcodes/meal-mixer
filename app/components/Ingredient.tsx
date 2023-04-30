@@ -2,12 +2,14 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
 type IngredientProps = {
-  name: String;
-  amount?: Number;
+  ingredient: Ingredient;
   onDelete?: () => void;
 };
 
-export const Ingredient = ({ name, amount = 1, onDelete }: IngredientProps) => {
+export const Ingredient = ({
+  ingredient: { name, amount },
+  onDelete,
+}: IngredientProps) => {
   return (
     <div className="flex m-3 w-96 flex flex-row justify-between drop-shadow-md">
       <div className="bg-white text-black h-15 w-full flex flex-row justify-between">

@@ -13,16 +13,11 @@ import { IngredientForm } from "./IngredientForm";
 //   { name: "Soy Sauce", amount: 4 },
 // ];
 
-type IngredientType = {
-  name: string;
-  amount: number;
-};
-
 export const IngredientList = () => {
-  const [ingredients, setIngredients] = useState<IngredientType[]>([]);
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
-  const addIngredient = (name: string, amount: number) => {
-    setIngredients([...ingredients, { name, amount }]);
+  const addIngredient = (ingredient: Ingredient) => {
+    setIngredients([...ingredients, ingredient]);
   };
 
   const deleteIngredient = (index: Number) => {
@@ -31,11 +26,10 @@ export const IngredientList = () => {
 
   return (
     <div className="mt-1{0 flex flex-col w-full items-center">
-      {ingredients.map(({ name, amount = 1 }, index) => (
+      {ingredients.map((ingredient, index) => (
         <Ingredient
           key={index}
-          name={name}
-          amount={amount}
+          ingredient={ingredient}
           onDelete={() => deleteIngredient(index)}
         />
       ))}

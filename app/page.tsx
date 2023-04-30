@@ -1,5 +1,7 @@
 import { Pacifico } from "next/font/google";
 import { IngredientList } from "./components/IngredientList";
+import { RecipeList } from "./components/RecipeList";
+import { testRecipes } from "./data/test";
 
 const pacifico = Pacifico({
   weight: "400",
@@ -15,6 +17,7 @@ export default function Home() {
         Meal Mixer
       </h1>
       <IngredientList />
+      <RecipeList recipes={testRecipes} />
       <footer className="text-center text-gray-50 pt-10">
         <div className="flex justify-center">
           <hr className="border-gray-50 w-80 " />
