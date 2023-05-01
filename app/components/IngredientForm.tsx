@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Button } from "./Button";
+import { v4 as uuidv4 } from "uuid";
 
-type IngredientFormProps = {
-  addIngredient: (ingredient: Ingredient) => void;
-};
+import useStore from "../../store";
 
-export const IngredientForm = ({ addIngredient }: IngredientFormProps) => {
+export const IngredientForm = () => {
+  const store = useStore();
+
   const [ingredientName, setIngredientName] = useState("");
   const [ingredientAmount, setIngredientAmount] = useState(1);
 
@@ -26,11 +27,12 @@ export const IngredientForm = ({ addIngredient }: IngredientFormProps) => {
     }
 
     const newIngredient = {
+      id: uuidv4(),
       name: ingredientNameTrimmed,
       amount: ingredientAmount,
     };
 
-    addIngredient(newIngredient);
+    store.addIngredient(newIngredient);
     setIngredientName("");
     setIngredientAmount(1);
   };

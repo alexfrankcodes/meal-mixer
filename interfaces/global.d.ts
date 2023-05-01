@@ -1,12 +1,12 @@
 interface Ingredient  {
-  id?: number;
+  id:  string;
   name: string;
   amount: number;
 }
 
 interface Recipe {
   id: number;
-  image: string;
   title: string;
+  usedIngredients: Ingredient[];
   missedIngredients: Ingredient[];
 }
