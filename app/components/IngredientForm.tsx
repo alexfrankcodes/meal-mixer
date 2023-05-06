@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Button } from "./Button";
+import { v4 as uuidv4 } from "uuid";
 
-type IngredientFormProps = {
-  addIngredient: (name: string, amount: number) => void;
-};
+import useStore from "../../store";
 
-export const IngredientForm = ({ addIngredient }: IngredientFormProps) => {
+export const IngredientForm = () => {
+  const store = useStore();
+
   const [ingredientName, setIngredientName] = useState("");
   const [ingredientAmount, setIngredientAmount] = useState(1);
 
@@ -20,14 +21,25 @@ export const IngredientForm = ({ addIngredient }: IngredientFormProps) => {
   };
 
   const handleSubmit = () => {
-    addIngredient(ingredientName, ingredientAmount);
+    const ingredientNameTrimmed: string = ingredientName.trim();
+    if (!ingredientNameTrimmed) {
+      return;
+    }
+
+    const newIngredient = {
+      id: uuidv4(),
+      name: ingredientNameTrimmed,
+      amount: ingredientAmount,
+    };
+
+    store.addIngredient(newIngredient);
     setIngredientName("");
     setIngredientAmount(1);
   };
 
   return (
-    <div className="flex flex-col w-96 text-gray-700 m-3">
-      <div className="flex flex-row drop-shadow-md">
+    <div className="flex flex-col w-96 text-gray-700">
+      <div className="flex flex-row drop-shadow-md my-3">
         <label htmlFor="ingredientName" className="sr-only">
           Ingredient Name
         </label>

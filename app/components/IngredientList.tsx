@@ -1,9 +1,8 @@
-"use client";
-
-import { useState } from "react";
 import { Ingredient } from "./Ingredient";
 import { Button } from "./Button";
 import { IngredientForm } from "./IngredientForm";
+import React from "react";
+import useStore from "../../store";
 
 //todo: remove test data
 // const testIngredients = [
@@ -13,36 +12,18 @@ import { IngredientForm } from "./IngredientForm";
 //   { name: "Soy Sauce", amount: 4 },
 // ];
 
-type IngredientType = {
-  name: string;
-  amount: number;
-};
-
 export const IngredientList = () => {
-  const [ingredients, setIngredients] = useState<IngredientType[]>([]);
-
-  const addIngredient = (name: string, amount: number) => {
-    setIngredients([...ingredients, { name, amount }]);
-  };
-
-  const deleteIngredient = (index: Number) => {
-    setIngredients(ingredients.filter((_, i) => i !== index));
-  };
+  const store = useStore();
 
   return (
     <div className="mt-1{0 flex flex-col w-full items-center">
-      {ingredients.map(({ name, amount = 1 }, index) => (
-        <Ingredient
-          key={index}
-          name={name}
-          amount={amount}
-          onDelete={() => deleteIngredient(index)}
-        />
+      {store.ingredients.map((ingredient, index) => (
+        <Ingredient key={index} ingredient={ingredient} />
       ))}
 
-      <IngredientForm addIngredient={addIngredient} />
+      <IngredientForm />
 
-      <Button text="Mix It!" />
+      <Button text="Mix It!" onClick={store.toggleRecipeListVisibility} />
     </div>
   );
 };
