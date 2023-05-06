@@ -1,9 +1,7 @@
-"use client";
-
 import React from "react";
 
 type ButtonProps = {
-  onClick?: () => void;
+  onClick?: () => void | Promise<void>;
   text: string;
 };
 

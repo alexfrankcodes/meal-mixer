@@ -1,27 +1,23 @@
-import { useState } from "react";
+// IngredientForm.tsx
 import { Button } from "./Button";
 import { v4 as uuidv4 } from "uuid";
-
 import useStore from "../../store";
 
 export const IngredientForm = () => {
   const store = useStore();
 
-  const [ingredientName, setIngredientName] = useState("");
-  const [ingredientAmount, setIngredientAmount] = useState(1);
-
   const handleIngredientChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setIngredientName(event.target.value);
+    store.setIngredientName(event.target.value);
   };
 
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIngredientAmount(parseInt(event.target.value));
+    store.setIngredientAmount(parseInt(event.target.value));
   };
 
   const handleSubmit = () => {
-    const ingredientNameTrimmed: string = ingredientName.trim();
+    const ingredientNameTrimmed: string = store.ingredientName.trim();
     if (!ingredientNameTrimmed) {
       return;
     }
@@ -29,12 +25,11 @@ export const IngredientForm = () => {
     const newIngredient = {
       id: uuidv4(),
       name: ingredientNameTrimmed,
-      amount: ingredientAmount,
+      amount: store.ingredientAmount,
     };
 
     store.addIngredient(newIngredient);
-    setIngredientName("");
-    setIngredientAmount(1);
+    store.resetIngredientForm();
   };
 
   return (
@@ -48,7 +43,7 @@ export const IngredientForm = () => {
           className="p-3 focus:outline-none w-3/4 border-r-2"
           type="text"
           placeholder="Enter ingredient..."
-          value={ingredientName}
+          value={store.ingredientName}
           onChange={handleIngredientChange}
         />
         <label htmlFor="ingredientAmount" className="sr-only">
@@ -60,7 +55,7 @@ export const IngredientForm = () => {
           type="number"
           placeholder="1"
           min={1}
-          value={ingredientAmount}
+          value={store.ingredientAmount}
           onChange={handleAmountChange}
         />
       </div>

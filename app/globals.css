@@ -2,17 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-   --foreground: rgb(255, 255, 255);
+  --foreground: rgb(255, 255, 255);
   --background-start: #22c1c3;
   --background-end: #fdbb2d;
   background-color: #fdbb2d;
 }
 
+main {
+  background: linear-gradient(
+    180deg,
+    var(--background-start),
+    var(--background-end)
+  );
+  height: 100vh;
+}
 
 body {
   color: var(--foreground);
-  font-family: 'Pacifico', cursive;
-  background: linear-gradient(180deg, var(--background-start), var(--background-end));
+  font-family: "Pacifico", cursive;
 }
