@@ -1,12 +1,10 @@
+"use client";
+
 import React from "react";
 import { Recipe } from "./Recipe";
 import useStore from "../../store";
 
-interface RecipeListProps {
-  recipes: Recipe[];
-}
-
-export const RecipeList = ({ recipes }: RecipeListProps) => {
+export const RecipeList = () => {
   const store = useStore();
 
   return (
@@ -17,7 +15,7 @@ export const RecipeList = ({ recipes }: RecipeListProps) => {
     >
       <h1 className="font-semibold text-3xl mt-6">You can make:</h1>
       <ul>
-        {recipes.map((recipe) => (
+        {store.recipes.map((recipe) => (
           <Recipe key={recipe.id} recipe={recipe} />
         ))}
       </ul>

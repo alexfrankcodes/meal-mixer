@@ -1,16 +1,10 @@
+"use client";
+
 import { Ingredient } from "./Ingredient";
 import { Button } from "./Button";
 import { IngredientForm } from "./IngredientForm";
-import React from "react";
-import useStore from "../../store";
 
-//todo: remove test data
-// const testIngredients = [
-//   { name: "Chicken", amount: 1 },
-//   { name: "Rice", amount: 2 },
-//   { name: "Broccoli", amount: 3 },
-//   { name: "Soy Sauce", amount: 4 },
-// ];
+import useStore from "../../store";
 
 export const IngredientList = () => {
   const store = useStore();
@@ -23,7 +17,7 @@ export const IngredientList = () => {
 
       <IngredientForm />
 
-      <Button text="Mix It!" onClick={store.toggleRecipeListVisibility} />
+      <Button text="Mix It!" onClick={store.fetchRecipes} />
     </div>
   );
 };
