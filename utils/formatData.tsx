@@ -1,5 +1,36 @@
 import { v4 as uuidv4 } from "uuid";
 
+const fillerWords = [
+  "and",
+  "or",
+  "the",
+  "a",
+  "an",
+  "of",
+  "in",
+  "on",
+  "to",
+  "with",
+  "without",
+  "for",
+  "by",
+  "at",
+  "as",
+  "so",
+  "such",
+  "if",
+  "then",
+  "but",
+  "like",
+  "just",
+  "only",
+  "also",
+  "within",
+  "into",
+  "upon",
+  "per",
+];
+
 export const formatData = (data: any) =>
   data.map((recipe: Recipe) => {
     return {
@@ -24,7 +55,11 @@ const capitalize = (str: string) =>
   str
     .split(" ")
     .map((word) => {
-      return word.charAt(0).toUpperCase() + word.slice(1);
+      if (!fillerWords.includes(word)) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      } else {
+        return word;
+      }
     })
     .join(" ");
 
