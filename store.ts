@@ -36,8 +36,12 @@ const useStore = create<Store>((set, get) => ({
     const ingredients = get()
       .ingredients.map((ingredient) => ingredient.name)
       .join(", ");
-    const recipes = await getRecipesFromIngredients(ingredients);
-    set({ recipes, recipeListVisible: true });
+    try {
+      const recipes = await getRecipesFromIngredients(ingredients);
+      set({ recipes, recipeListVisible: true });
+    } catch (error) {
+      set({ recipes: [], recipeListVisible: true });
+    }
   },
 }));
 
