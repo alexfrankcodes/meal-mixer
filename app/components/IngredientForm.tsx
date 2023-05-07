@@ -17,7 +17,7 @@ export const IngredientForm = () => {
   };
 
   return (
-    <div className="flex flex-col w-64 sm:w-96 text-gray-700">
+    <div className="flex flex-col w-72  sm:w-96 text-gray-700">
       <div className="flex flex-row drop-shadow-md my-3">
         <label htmlFor="ingredientName" className="sr-only">
           Ingredient Name

@@ -13,15 +13,19 @@ export const RecipeList = () => {
         store.recipeListVisible ? "" : "invisible"
       } flex flex-col items-center w-full`}
     >
-      <h1 className="font-semibold text-3xl text-center mt-6 mb-2">
+      <h1 className="font-semibold text-3xl text-center mt-6 mb-4 sm:mb-2">
         You can make:
       </h1>
-      <ul className="w-full">
-        {store.recipes.length !== 0
-          ? store.recipes.map((recipe) => (
-              <Recipe key={recipe.id} recipe={recipe} />
-            ))
-          : "No recipes found. Try adding more ingredients!"}
+      <ul className="w-fulljustify-center">
+        {store.recipes.length !== 0 ? (
+          store.recipes.map((recipe) => (
+            <Recipe key={recipe.id} recipe={recipe} />
+          ))
+        ) : (
+          <p className="text-center">
+            No recipes found. <br /> Try adding more ingredients!
+          </p>
+        )}
       </ul>
     </div>
   );

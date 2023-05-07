@@ -23,7 +23,7 @@ export const Recipe = ({
             ))}
           </ul>
         </div>
-        <div className="w-1/2 text-gray-900 p-3 pr-3 max-h-40 overflow-y-scroll">
+        <div className="w-1/2 text-gray-900 p-3 pr-3 max-h-40 overflow-y-scroll mx-2 sm:m-0">
           <h3 className="font-semibold mb-2">You&apos;ll also need:</h3>
           <ul className="list-decimal pl-5 space-y-1">
             {missedIngredients.map((ingredient) => (
