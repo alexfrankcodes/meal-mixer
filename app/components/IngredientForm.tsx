@@ -1,7 +1,7 @@
 // IngredientForm.tsx
 import { Button } from "./Button";
-import { v4 as uuidv4 } from "uuid";
 import useStore from "../../store";
+import { createIngredient } from "@/utils/formatData";
 
 export const IngredientForm = () => {
   const store = useStore();
@@ -12,24 +12,8 @@ export const IngredientForm = () => {
     store.setIngredientName(event.target.value);
   };
 
-  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    store.setIngredientAmount(parseInt(event.target.value));
-  };
-
   const handleSubmit = () => {
-    const ingredientNameTrimmed: string = store.ingredientName.trim();
-    if (!ingredientNameTrimmed) {
-      return;
-    }
-
-    const newIngredient = {
-      id: uuidv4(),
-      name: ingredientNameTrimmed,
-      amount: store.ingredientAmount,
-    };
-
-    store.addIngredient(newIngredient);
-    store.resetIngredientForm();
+    createIngredient(store);
   };
 
   return (
@@ -40,7 +24,7 @@ export const IngredientForm = () => {
         </label>
         <input
           id="ingredientName"
-          className="p-3 focus:outline-none w-3/4 border-r-2"
+          className="p-3 focus:outline-none w-full border-r-2"
           type="text"
           placeholder="Enter ingredient..."
           value={store.ingredientName}
@@ -49,15 +33,6 @@ export const IngredientForm = () => {
         <label htmlFor="ingredientAmount" className="sr-only">
           Ingredient Amount
         </label>
-        <input
-          id="ingredientAmount"
-          className="p-3 focus:outline-none w-1/4 text-center"
-          type="number"
-          placeholder="1"
-          min={1}
-          value={store.ingredientAmount}
-          onChange={handleAmountChange}
-        />
       </div>
       <Button text="Add Ingredient" onClick={handleSubmit} />
     </div>
