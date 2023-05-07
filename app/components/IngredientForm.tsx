@@ -23,16 +23,19 @@ export const IngredientForm = () => {
           Ingredient Name
         </label>
         <input
+          ref={(input) => input && input.focus()}
           id="ingredientName"
           className="p-3 focus:outline-none w-full border-r-2"
           type="text"
           placeholder="Enter ingredient..."
           value={store.ingredientName}
           onChange={handleIngredientChange}
+          onKeyUp={(event) => {
+            if (event.key === "Enter") {
+              handleSubmit();
+            }
+          }}
         />
-        <label htmlFor="ingredientAmount" className="sr-only">
-          Ingredient Amount
-        </label>
       </div>
       <Button text="Add Ingredient" onClick={handleSubmit} />
     </div>
