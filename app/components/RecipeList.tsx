@@ -23,7 +23,7 @@ export const RecipeList = () => {
           ))
         ) : (
           <p className="text-center">
-            No recipes found. <br /> Try adding more ingredients!
+            No recipes found. <br /> Try adding or removing ingredients!
           </p>
         )}
       </ul>
