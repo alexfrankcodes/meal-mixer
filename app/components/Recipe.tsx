@@ -10,7 +10,7 @@ export const Recipe = ({
   recipe: { title, usedIngredients, missedIngredients },
 }: RecipeProps) => {
   return (
-    <div className="flex flex-col  w-full max-w-xl mx-auto my-4 shadow-md rounded overflow-hidden h-104">
+    <div className="flex flex-col  w-full max-w-xl mx-auto sm:my-4 shadow-md sm:rounded overflow-hidden h-104">
       <div className="bg-gradient-to-b from-green-400 to-green-500 p-4 flex-shrink-0">
         <h2 className="text-white font-bold text-xl cursor-default">{title}</h2>
       </div>

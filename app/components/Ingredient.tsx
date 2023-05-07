@@ -10,7 +10,7 @@ export const Ingredient = ({ ingredient: { id, name } }: IngredientProps) => {
   const store = useStore();
 
   return (
-    <div className="flex m-3 w-96 flex flex-row justify-between drop-shadow-md">
+    <div className="flex m-3 w-64 sm:w-96 flex flex-row justify-between drop-shadow-md">
       <div className="bg-white text-black h-15 w-full flex flex-row justify-between">
         <p className="flex items-center pl-6 ">{name}</p>
       </div>
