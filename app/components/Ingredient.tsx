@@ -16,7 +16,7 @@ export const Ingredient = ({ ingredient: { id, name } }: IngredientProps) => {
       </div>
 
       <button
-        className="bg-red-500 p-4 hover:bg-red-600"
+        className="bg-red-500 p-4 border-none hover:bg-red-600"
         onClick={() => store.deleteIngredient(id)}
       >
         <FaTrashAlt />

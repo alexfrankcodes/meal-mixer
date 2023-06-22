@@ -25,7 +25,7 @@ export const IngredientForm = () => {
         <input
           ref={(input) => input && input.focus()}
           id="ingredientName"
-          className="p-3 focus:outline-none w-full border-r-2"
+          className="p-3 focus:outline-none w-full border-none"
           type="text"
           placeholder="Enter ingredient..."
           value={store.ingredientName}

@@ -9,7 +9,7 @@ export const Button = ({ onClick, text }: ButtonProps) => {
   return (
     <div>
       <button
-        className="bg-gradient-to-b from-green-400 to-green-500 hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-500 text-white font-bold py-2 px-4 my-2 w-72  sm:w-96 drop-shadow-md rounded-md"
+        className="p-3 my-3 w-72 sm:w-96 drop-shadow-md rounded-md"
         onClick={onClick}
       >
         {text}
